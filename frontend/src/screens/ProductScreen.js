@@ -16,12 +16,10 @@ import { listProductDetails } from '../actions/productActions';
 
 import Rating from '../components/Rating';
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   // retrieve the item details of the particular item using props.match and params that was passed in product/:id
 
   const dispatch = useDispatch();
-
-  // const [product, setProduct] = useState([]);
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -108,6 +106,7 @@ const ProductScreen = ({ history, match }) => {
                 )}
                 <ListGroup.Item>
                   <Button
+                    onClick={addToCartHandler}
                     className="btn-block"
                     type="button"
                     disabled={product.countInStock === 0}
